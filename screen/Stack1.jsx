@@ -1,12 +1,8 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { create } from 'zustand'
+import { useStore } from './UseStore';
 
-const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  // removeAllBears: () => set({ bears: 0 }),
-}))
 
 
 
@@ -21,8 +17,8 @@ const stack1 = ({ navigation }) => {
         title="Go to Stack 2"
         onPress={() => navigation.navigate('Stack2')}
       />
-      <View style={{ marginTop: 30 }}>
-        <Text>
+      <View style={{ marginVertical: 30, alignItems: 'center' }}>
+        <Text style={{marginVertical:20,fontSize:35}}>
           {bears}
         </Text>
         <Button
