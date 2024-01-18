@@ -1,23 +1,33 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList } from 'react-native';
 import { useHandleApi } from './ReactQuery';
+import { styles } from './StackStyle';
 
 const Stack2 = ({ navigation }) => {
   const { isLoading, error, data } = useHandleApi()
 
   if (isLoading) return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 40,color:'red' }}>Loading...</Text>
+    <View style={styles.isLoading}>
+      <Text style={styles.isLoadingText}>Loading...</Text>
     </View>
   );
-  if (error) console.log('An error occurred while fetching the user data ', error);
+  if (error) return (
+
+    <View style={styles.isLoading}>
+      <Text style={styles.isLoadingText}>An error occurred while fetching the user data</Text>
+    </View>
+  );
 
   return (
     <View>
-      <Button
-        title="Go to Stack 3"
-        onPress={() => navigation.navigate('Stack3')}
-      />
+      <View style={styles.mainView}>
+        <Text style={styles.countText}>Stack2</Text>
+        <Button
+          title="Go to Stack 3"
+          onPress={() => navigation.navigate('Stack3')}
+        />
+      </View>
+      <Text style={styles.header1}>React Query Example</Text>
       <View style={{ backgroundColor: 'black' }}>
         <FlatList
           data={data}
@@ -34,53 +44,5 @@ const Stack2 = ({ navigation }) => {
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    paddingTop: 50,
-    padding: 10,
-
-  },
-  modeButton: {
-    borderWidth: 1,
-    borderColor: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10
-  },
-  card: {
-    backgroundColor: 'rgb(196, 241, 107)',
-    margin: 10,
-    padding: 10,
-    borderRadius: 10
-  },
-  header: {
-    marginBottom: 15,
-    fontSize: 25,
-    textAlign: 'center',
-    color: 'yellow',
-    backgroundColor: 'green',
-    padding: 5,
-    borderRadius: 20
-  },
-  userID: {
-    marginVertical: 5,
-    color: 'brown',
-    fontSize: 20
-  },
-  title: {
-    marginVertical: 5,
-    color: 'red',
-  },
-  body: {
-    marginVertical: 5,
-    color: 'blue'
-  },
-
-});
-
-
 
 export default Stack2;
