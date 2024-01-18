@@ -4,7 +4,7 @@ import { useStore } from './UseStore';
 
 const Stack5 = ({ navigation }) => {
 
-  const bears = useStore((state) => state.bears);
+  const count = useStore((state) => state.count);
 
   return (
     <View>
@@ -14,8 +14,8 @@ const Stack5 = ({ navigation }) => {
         onPress={() => navigation.navigate('Stack1')}
       />
       <View style={{ marginVertical: 30, alignItems: 'center' }}>
-        <Text style={{ marginVertical: 20,fontSize:35 }}>
-          {bears}
+        <Text style={{ marginVertical: 20, fontSize: 35 }}>
+          {count}
         </Text>
       </View>
     </View>
